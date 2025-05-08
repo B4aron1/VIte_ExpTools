@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="840.0" style="-fx-background-color: #0a0e14;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo2.HelloController">
+   <top>
+      <VBox alignment="CENTER" prefHeight="80.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to bottom, #121921, #0a0e14); -fx-border-color: #1f5f87; -fx-border-width: 0 0 1 0;" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="V I T E 漏 洞 检 测 工 具" textFill="#00ccff">
+               <font>
+                  <Font name="Consolas Bold" size="30.0" />
+               </font>
+               <effect>
+                  <Glow level="0.3">
+                     <input>
+                        <DropShadow height="8.0" radius="3.5" spread="0.3" width="8.0">
+                           <color>
+                              <Color blue="1.0" green="0.8" />
+                           </color>
+                        </DropShadow>
+                     </input>
+                  </Glow>
+               </effect>
+            </Label>
+            <HBox alignment="CENTER" spacing="15.0">
+               <children>
+                  <Label text="[ 任意文件读取 ]" textFill="#1eff8e">
+                     <font>
+                        <Font name="Consolas" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label text="[ 安全检测 ]" textFill="#1eff8e">
+                     <font>
+                        <Font name="Consolas" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label text="[ 渗透测试 ]" textFill="#1eff8e">
+                     <font>
+                        <Font name="Consolas" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <SplitPane dividerPositions="0.35" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" style="-fx-background-color: transparent; -fx-box-border: transparent;" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #121921; -fx-background-radius: 5; -fx-border-color: #1f5f87; -fx-border-radius: 5; -fx-border-width: 1;">
+               <children>
+                  <VBox layoutX="10.0" layoutY="10.0" spacing="15.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                           <children>
+                              <VBox prefWidth="95.0">
+                                 <children>
+                                    <Label style="-fx-font-weight: bold;" text="[ 单个目标 ]" textFill="#00ff95">
+                                       <font>
+                                          <Font name="Consolas Bold" size="14.0" />
+                                       </font>
+                                       <effect>
+                                          <Glow level="0.2" />
+                                       </effect>
+                                    </Label>
+                                    <Label text="TARGET_URL" textFill="#7a8288">
+                                       <font>
+                                          <Font name="Consolas" size="11.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <TextField fx:id="Simpleurl" prefHeight="36.0" prefWidth="500.0" promptText="输入目标地址 (http://example.com:5173)" style="-fx-background-color: #1c2128; -fx-text-fill: #00ccff; -fx-background-radius: 3; -fx-border-radius: 3; -fx-border-color: #34444c; -fx-border-width: 1; -fx-padding: 5 10 5 10;" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Consolas" size="14.0" />
+                                 </font>
+                                 <effect>
+                                    <InnerShadow height="5.0" radius="2.0" width="5.0">
+                                       <color>
+                                          <Color blue="1.0" green="0.8" />
+                                       </color>
+                                    </InnerShadow>
+                                 </effect>
+                              </TextField>
+                              <Button mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #1e3c5a; -fx-text-fill: #00ccff; -fx-font-weight: bold; -fx-background-radius: 3; -fx-border-color: #00ccff; -fx-border-radius: 3; -fx-border-width: 1;" text="开始检测">
+                                 <font>
+                                    <Font name="Consolas Bold" size="14.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow height="8.0" radius="3.5" width="8.0">
+                                       <color>
+                                          <Color blue="1.0" green="0.8" opacity="0.3" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                                 <tooltip>
+                                    <Tooltip style="-fx-background-color: #121921; -fx-text-fill: #00ccff; -fx-font-family: 'Consolas';" text="点击开始检测漏洞" />
+                                 </tooltip>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" spacing="10.0">
+                           <children>
+                              <VBox prefWidth="95.0">
+                                 <children>
+                                    <Label style="-fx-font-weight: bold;" text="[ 批量目标 ]" textFill="#00ff95">
+                                       <font>
+                                          <Font name="Consolas Bold" size="14.0" />
+                                       </font>
+                                       <effect>
+                                          <Glow level="0.2" />
+                                       </effect>
+                                    </Label>
+                                    <Label text="FILE_LIST" textFill="#7a8288">
+                                       <font>
+                                          <Font name="Consolas" size="11.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#handleFileChooser" prefHeight="36.0" prefWidth="140.0" style="-fx-background-color: #1e3c5a; -fx-text-fill: #00ccff; -fx-font-weight: bold; -fx-background-radius: 3; -fx-border-color: #00ccff; -fx-border-radius: 3; -fx-border-width: 1;" text="选择文件">
+                                       <font>
+                                          <Font name="Consolas Bold" size="14.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow height="8.0" radius="3.5" width="8.0">
+                                             <color>
+                                                <Color blue="1.0" green="0.8" opacity="0.3" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                       <tooltip>
+                                          <Tooltip style="-fx-background-color: #121921; -fx-text-fill: #00ccff; -fx-font-family: 'Consolas';" text="选择包含多个URL的txt文件" />
+                                       </tooltip>
+                                    </Button>
+                                    <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="36.0" prefWidth="350.0" style="-fx-background-color: #1c2128; -fx-border-color: #34444c; -fx-border-radius: 3; -fx-background-radius: 3;">
+                                       <content>
+                                          <Text fx:id="VulnPath1" fill="#00ccff" strokeWidth="0.0" text="未选择文件">
+                                             <font>
+                                                <Font name="Consolas" size="13.0" />
+                                             </font>
+                                          </Text>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </HBox>
+                              <Button mnemonicParsing="false" onAction="#handlfuzzButtonClick" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #2d1e5a; -fx-text-fill: #ac8eff; -fx-font-weight: bold; -fx-background-radius: 3; -fx-border-color: #ac8eff; -fx-border-radius: 3; -fx-border-width: 1;" text="FUZZ检测">
+                                 <font>
+                                    <Font name="Consolas Bold" size="14.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow height="8.0" radius="3.5" width="8.0">
+                                       <color>
+                                          <Color blue="1.0" red="0.5" opacity="0.3" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                                 <tooltip>
+                                    <Tooltip style="-fx-background-color: #121921; -fx-text-fill: #00ccff; -fx-font-family: 'Consolas';" text="使用Fuzz字典进行自动检测" />
+                                 </tooltip>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="61.0" spacing="10.0">
+                           <children>
+                              <VBox prefWidth="95.0">
+                                 <children>
+                                    <Label style="-fx-font-weight: bold;" text="[ 系统类型 ]" textFill="#00ff95">
+                                       <font>
+                                          <Font name="Consolas Bold" size="14.0" />
+                                       </font>
+                                       <effect>
+                                          <Glow level="0.2" />
+                                       </effect>
+                                    </Label>
+                                    <Label text="OS_SELECT" textFill="#7a8288">
+                                       <font>
+                                          <Font name="Consolas" size="11.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <ChoiceBox fx:id="choiceBox" prefHeight="36.0" prefWidth="200.0" style="-fx-background-color: #1c2128; -fx-border-color: #34444c; -fx-border-radius: 3; -fx-background-radius: 3; -fx-mark-color: #00ccff;">
+                                  <items>
+                                      <FXCollections fx:factory="observableArrayList">
+                                          <String fx:value="Windows系统" />
+                                          <String fx:value="Linux系统" />
+                                      </FXCollections>
+                                  </items>
+                                  <value>Linux系统</value>
+                              </ChoiceBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" width="10.0">
+                     <color>
+                        <Color blue="1.0" green="0.8" opacity="0.1" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <VBox layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="40.0" style="-fx-background-color: #121921; -fx-background-radius: 5 5 0 0; -fx-border-color: #1f5f87; -fx-border-width: 1 1 0 1; -fx-border-radius: 5 5 0 0;">
+                           <children>
+                              <Label text="[ OUTPUT_TERMINAL ]" textFill="#00ff95">
+                                 <font>
+                                    <Font name="Consolas Bold" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                                 <effect>
+                                    <Glow level="0.2" />
+                                 </effect>
+                              </Label>
+                              <Label text="检测结果输出日志" textFill="#7a8288">
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <TextArea fx:id="outputTextArea" editable="false" prefHeight="400.0" prefWidth="200.0" style="-fx-control-inner-background: #0a0e14; -fx-background-color: #121921; -fx-text-fill: #00ccff; -fx-border-color: #1f5f87; -fx-border-width: 0 1 1 1; -fx-border-radius: 0 0 5 5; -fx-background-radius: 0 0 5 5; -fx-font-family: 'Consolas', 'Monaco', monospace;" styleClass="console-text" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font name="Consolas" size="13.0" />
+                           </font>
+                           <effect>
+                              <InnerShadow height="5.0" radius="2.0" width="5.0">
+                                 <color>
+                                    <Color blue="1.0" green="0.8" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                        </TextArea>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" prefHeight="35.0" style="-fx-background-color: #121921; -fx-border-color: #1f5f87; -fx-border-width: 1 0 0 0;" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="[ STATUS: READY ]">
+               <font>
+                  <Font name="Consolas" size="12.0" />
+               </font>
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#00ccff" />
+                        <Stop color="#00ff88" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Text>
+            <Label text=" | VITE漏洞检测 v1.0 | By Baron | 仅用于授权测试" textFill="#7a8288">
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Consolas" size="12.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="15.0" />
+         </padding>
+      </HBox>
+   </bottom>
+</BorderPane>

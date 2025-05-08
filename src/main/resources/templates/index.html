@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite任意文件读取漏洞检测工具</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+        }
+        .result-area {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            min-height: 300px;
+            max-height: 500px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: monospace;
+        }
+        .section {
+            margin-bottom: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Vite任意文件读取漏洞一键利用工具</h1>
+        
+        <div class="alert alert-success" th:if="${message}" th:text="${message}"></div>
+        <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <!-- 单个目标检测 -->
+                <div class="section">
+                    <h2>单个目标检测</h2>
+                    <form th:action="@{/check}" method="post">
+                        <div class="mb-3">
+                            <label for="url" class="form-label">URL地址</label>
+                            <input type="text" class="form-control" id="url" name="url" placeholder="输入URL">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">操作系统类型</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="osType" id="osLinux" value="linux" checked>
+                                <label class="form-check-label" for="osLinux">Linux系统</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="osType" id="osWindows" value="windows">
+                                <label class="form-check-label" for="osWindows">Windows系统</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">开始检测</button>
+                    </form>
+                </div>
+                
+                <!-- 批量目标检测 -->
+                <div class="section">
+                    <h2>批量目标检测</h2>
+                    <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="file" class="form-label">选择包含URL列表的文件</label>
+                            <input class="form-control" type="file" id="file" name="file">
+                        </div>
+                        <button type="submit" class="btn btn-secondary">上传文件</button>
+                    </form>
+                    
+                    <form th:action="@{/checkFile}" method="post" class="mt-3">
+                        <div class="mb-3">
+                            <label class="form-label">操作系统类型</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="osType" id="osLinuxBatch" value="linux" checked>
+                                <label class="form-check-label" for="osLinuxBatch">Linux系统</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="osType" id="osWindowsBatch" value="windows">
+                                <label class="form-check-label" for="osWindowsBatch">Windows系统</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">开始批量检测</button>
+                    </form>
+                </div>
+                
+                <!-- Fuzz检测 -->
+                <div class="section">
+                    <h2>Fuzz检测</h2>
+                    <form th:action="@{/fuzz}" method="post">
+                        <div class="mb-3">
+                            <label for="fuzzUrl" class="form-label">URL地址</label>
+                            <input type="text" class="form-control" id="fuzzUrl" name="url" placeholder="输入URL">
+                        </div>
+                        <button type="submit" class="btn btn-danger">开始Fuzz检测</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <!-- 结果输出区域 -->
+                <div class="section h-100">
+                    <h2>检测结果输出</h2>
+                    <div class="result-area" th:if="${results}">
+                        <p th:each="result : ${results}" th:text="${result}"></p>
+                    </div>
+                    <div class="result-area" th:unless="${results}">
+                        请输入URL或选择文件进行检测
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
